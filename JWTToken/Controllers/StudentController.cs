@@ -16,6 +16,11 @@ namespace JWTToken.Controllers
 
         }
         [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        
         public ActionResult<Student> GetStudentsbyId(int id)
         {   //bad request --400 error client error
             if(id <= 0)
@@ -33,6 +38,10 @@ namespace JWTToken.Controllers
 
         }
         [HttpGet("{name:alpha}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<Student> GetStudentsbyname(string name)
         {
             //400 error client error
@@ -51,6 +60,10 @@ namespace JWTToken.Controllers
 
         }
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<bool> delete(int id)
         {
             //400 error client error
@@ -70,6 +83,10 @@ namespace JWTToken.Controllers
 
         }
         [HttpDelete("{name:alpha}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<Student> delete(string name)
         {
             if (string.IsNullOrEmpty(name))
