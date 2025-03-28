@@ -7,21 +7,21 @@
             new Student
                 {
                     Id = 1,
-                    Name = "John",
+                    StudentName = "John",
                     Email = "john@gmail.com",
                     Address = "USA"
                 },
                 new Student
                 {
                     Id = 2,
-                    Name = "balu",
+                    StudentName = "balu",
                     Email = "balu@gmail.com",
                     Address = "Canada"
                 },
                  new Student
                 {
                     Id = 3,
-                    Name = "Jane",
+                    StudentName = "Jane",
                     Email = "jane@gmail.com",
                     Address = "Canada"
                 }

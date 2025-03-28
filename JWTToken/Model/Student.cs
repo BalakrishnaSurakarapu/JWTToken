@@ -1,16 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using JWTToken.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace JWTToken.Model
 {
     public class Student
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
-        public string Name { get; set; }
-        [EmailAddress]
+        public string StudentName { get; set; }
         public string Email { get; set; }
-        [Required]
         public string Address { get; set; }
+        public DateTime DOB { get; set; }
+        public int? DepartmentId { get; set; }
+
+        public virtual Department? Department { get; set; }
     }
 }
