@@ -41,6 +41,7 @@ namespace JWTToken.Controllers
         {
             try
             {
+
                 _logger.LogInformation("GetStudents method started");
                 var students = await _studentRepository.GetAllAsync();
 
