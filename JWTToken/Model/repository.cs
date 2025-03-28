@@ -14,8 +14,8 @@
                 new Student
                 {
                     Id = 2,
-                    Name = "Jane",
-                    Email = "jane@gmail.com",
+                    Name = "balu",
+                    Email = "balu@gmail.com",
                     Address = "Canada"
                 },
                  new Student

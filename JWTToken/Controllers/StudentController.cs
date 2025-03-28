@@ -14,11 +14,44 @@ namespace JWTToken.Controllers
             return repository.students;
 
         }
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public Student GetStudentsbyId(int id)
         {
             return repository.students.Where(n => n.Id == id).FirstOrDefault();
 
         }
+        [HttpGet("{name:alpha}")]
+        public Student GetStudentsbyname(string name)
+        {
+            return repository.students.Where(n => n.Name == name).FirstOrDefault();
+
+        }
+        [HttpDelete("{id}")]
+        public Student delete(int id)
+        {
+             if(repository.students.Remove(repository.students.Where(n => n.Id == id).FirstOrDefault()))
+            {
+                return repository.students.Where(n => n.Id == id).FirstOrDefault();
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        [HttpDelete("{name:alpha}")]
+        public Student delete(string name)
+        {
+            if (repository.students.Remove(repository.students.Where(n => n.Name == name).FirstOrDefault()))
+            {
+                return repository.students.Where(n => n.Name == name).FirstOrDefault();
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
     }
 }
