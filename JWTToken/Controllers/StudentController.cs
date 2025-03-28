@@ -9,47 +9,80 @@ namespace JWTToken.Controllers
     public class StudentController : ControllerBase
     {
         [HttpGet]
-        public IEnumerable<Student> GetStudents()
+        [Route("GetStudents")]
+        public ActionResult<IEnumerable<Student>> GetStudents()
         {
             return repository.students;
 
         }
         [HttpGet("{id:int}")]
-        public Student GetStudentsbyId(int id)
-        {
-            return repository.students.Where(n => n.Id == id).FirstOrDefault();
+        public ActionResult<Student> GetStudentsbyId(int id)
+        {   //bad request --400 error client error
+            if(id <= 0)
+            {
+                return BadRequest();
+            }
+            var student = repository.students.Where(n => n.Id == id).FirstOrDefault();
+            //not found --404 error client error
+            if (student == null)
+            {
+                return NotFound($"the student id {id} not found");
+            }
+            //200 success
+            return Ok(student);
 
         }
         [HttpGet("{name:alpha}")]
-        public Student GetStudentsbyname(string name)
+        public ActionResult<Student> GetStudentsbyname(string name)
         {
-            return repository.students.Where(n => n.Name == name).FirstOrDefault();
+            //400 error client error
+            if (string.IsNullOrEmpty(name))
+            {
+                return BadRequest();
+            }
+            var student = repository.students.Where(n => n.Name == name).FirstOrDefault();
+            //404 error client error
+            if (student == null)
+            {
+                return NotFound($"the student name {name} not found");
+            }
+            //200 success
+            return Ok(student);
 
         }
         [HttpDelete("{id}")]
-        public Student delete(int id)
+        public ActionResult<bool> delete(int id)
         {
-             if(repository.students.Remove(repository.students.Where(n => n.Id == id).FirstOrDefault()))
+            //400 error client error
+            if (id <= 0)
             {
-                return repository.students.Where(n => n.Id == id).FirstOrDefault();
+                return BadRequest();
             }
-            else
+            var student = repository.students.Where(n => n.Id == id).FirstOrDefault();
+            //404 error client error
+            if (student == null)
             {
-                return null;
+                return NotFound($"the student id {id} not found");
             }
+            repository.students.Remove(student);
+            //200 success
+            return Ok(true);
 
         }
         [HttpDelete("{name:alpha}")]
-        public Student delete(string name)
+        public ActionResult<Student> delete(string name)
         {
-            if (repository.students.Remove(repository.students.Where(n => n.Name == name).FirstOrDefault()))
+            if (string.IsNullOrEmpty(name))
             {
-                return repository.students.Where(n => n.Name == name).FirstOrDefault();
+                return BadRequest();
             }
-            else
+            var student = repository.students.Where(n => n.Name == name).FirstOrDefault();
+            if (student == null)
             {
-                return null;
+                return NotFound($"the student name {name} not found");
             }
+            repository.students.Remove(student);
+            return Ok(student);
 
         }
 
