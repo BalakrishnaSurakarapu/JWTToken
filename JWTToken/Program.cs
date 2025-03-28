@@ -126,52 +126,6 @@ string MicrosoftIssuer = builder.Configuration.GetValue<string>("MicrosoftIssuer
 string LocalIssuer = builder.Configuration.GetValue<string>("LocalIssuer");
 
 //JWT Authentication Configuration
-//builder.Services.AddAuthentication(options =>
-//{
-//    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-//}).AddJwtBearer("LoginForGooleUsers", options =>
-//{
-//    //options.RequireHttpsMetadata = false;
-//    options.SaveToken = true;
-//    options.TokenValidationParameters = new TokenValidationParameters()
-//    {
-//        ValidateIssuerSigningKey = true,
-//        IssuerSigningKey = new SymmetricSecurityKey(keyJWTSecretforGoogle),
-//        ValidateIssuer = true,
-//        ValidIssuer = GoogleIssuer,
-//        ValidateAudience = true,
-//        ValidAudience = GoogleAudience
-//    };
-//}).AddJwtBearer("LoginForMicrosoftUsers", options =>
-//{
-//    //options.RequireHttpsMetadata = false;
-//    options.SaveToken = true;
-//    options.TokenValidationParameters = new TokenValidationParameters()
-//    {
-//        ValidateIssuerSigningKey = true,
-//        IssuerSigningKey = new SymmetricSecurityKey(keyJWTSecretforMicrosoft),
-//        ValidateIssuer = true,
-//        ValidIssuer = MicrosoftIssuer,
-//        ValidateAudience = true,
-//        ValidAudience = MicrosoftAudience
-//    };
-//}).AddJwtBearer("LoginForLocalUsers", options =>
-//{
-//    //options.RequireHttpsMetadata = false;
-//    options.SaveToken = true;
-//    options.TokenValidationParameters = new TokenValidationParameters()
-//    {
-//        ValidateIssuerSigningKey = true,
-//        IssuerSigningKey = new SymmetricSecurityKey(keyJWTSecretforLocal),
-//        ValidateIssuer = true,
-//        ValidIssuer = LocalIssuer,
-//        ValidateAudience = true,
-//        ValidAudience = LocalAudience
-//    };
-//});
-
-
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
