@@ -1,16 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace JWTToken.Model
+﻿namespace JWTToken.Model
 {
-    public class Student
+    public class StudentDTO
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
         public string Name { get; set; }
-        [EmailAddress]
         public string Email { get; set; }
-        [Required]
         public string Address { get; set; }
     }
 }
