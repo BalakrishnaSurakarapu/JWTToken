@@ -55,6 +55,12 @@ namespace JWTToken.Services
 
             return _mapper.Map<List<UserReadonlyDTO>>(users);
         }
+        public async Task<List<UserDTO>> GetUsers1Async()
+        {
+            var users = await _userRepository.GetAllByFilterAsync(u => !u.IsDeleted);
+
+            return _mapper.Map<List<UserDTO>>(users);
+        }
 
         public async Task<UserReadonlyDTO> GetUserByIdAsync(int id)
         {

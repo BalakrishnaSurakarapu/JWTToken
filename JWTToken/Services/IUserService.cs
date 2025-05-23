@@ -6,6 +6,7 @@ namespace JWTToken.Services
     {
         Task<bool> CreateUserAsync(UserDTO dto);
         Task<List<UserReadonlyDTO>> GetUsersAsync();
+        Task<List<UserDTO>> GetUsers1Async();
         Task<UserReadonlyDTO> GetUserByIdAsync(int id);
         Task<UserReadonlyDTO> GetUserByUsernameAsync(string username);
         Task<bool> UpdateUserAsync(UserDTO dto);

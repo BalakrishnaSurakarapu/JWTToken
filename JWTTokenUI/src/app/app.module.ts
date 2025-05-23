@@ -11,6 +11,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RoleService } from './services/role.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BgcolorDirective } from './bgcolor.directive';
+import { DirectiveComponent } from './directive/directive.component';
+
 
 @NgModule({
   declarations: [
@@ -19,13 +23,15 @@ import { CommonModule } from '@angular/common';
     RoleComponent,
     UserComponent,
     StudentComponent,
+    BgcolorDirective,
+    DirectiveComponent,
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,CommonModule,CommonModule
+    ReactiveFormsModule,CommonModule,NgbModule
   ],
   providers: [RoleService],
   bootstrap: [AppComponent]

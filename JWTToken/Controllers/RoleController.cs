@@ -5,11 +5,13 @@ using JWTToken.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JWTToken.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize(AuthenticationSchemes = "LoginForLocalUsers", Roles = "Superadmin,Admin")]
     public class RoleController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -215,12 +217,16 @@ namespace JWTToken.Controllers
                 if (role == null)
                     return BadRequest($"Role not found with id: {id} to delete");
 
-                await _roleRepository.DeleteAsync(role);
+                // await _roleRepository.DeleteAsync(role);
+                role.IsActive = false;
+                role.IsDeleted = true;
+                await _roleRepository.UpdateAsync(role);
                 _apiResponse.Status = true;
                 _apiResponse.StatusCode = HttpStatusCode.OK;
                 _apiResponse.Data = true;
 
                 return Ok(_apiResponse);
+
             }
             catch (Exception ex)
             {

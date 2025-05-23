@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col-md-6">
         <h1>Roles</h1>
+        <h2 appBgColor="yellow">This heading has a yellow background.</h2>
+
     </div>
     <div class="col-md-6">
         <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-primary mt-2 me-2 bi bi-plus-square"
-                (click)="edit(content, {id:0, roleName:'', description:'', isActive:false})">
-                Add New Role
-            </button>
+                (click)="edit(content, {id:0,roleName:'',description:'',isActive:false})"> Add New Role</button>
         </div>
     </div>
 </div>
@@ -23,29 +23,47 @@
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
+            <!-- <tbody>
+                @for (role of roles; track $index) {
+                <tr>
+                    <th scope="row">{{role.id}}</th>
+                    <td>{{role.roleName}}</td>
+                    <td>{{role.description}}</td>
+                    <td>{{role.isActive}}</td>
+                    <td>
+                        <button type="button" (click)="managePrivileges(role)" class="btn btn-warning" title="Manage Privileges"><i
+                                class="bi bi-lock"></i></button>
+                        <button type="button" (click)="edit(content, role)" class="btn btn-primary ms-2" title="Edit"><i
+                                class="bi bi-pencil-square"></i></button>
+                        <button type="button" (click)="delete(role.id)" class="btn btn-danger ms-2" title="Delete"><i
+                                class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+                }
+            </tbody> -->
             <tbody>
-                <tr *ngFor="let role of roles; let i = index; trackBy: trackByRoleId">
-                    <th scope="row">{{ role.id }}</th>
-                    <td>{{ role.roleName }}</td>
-                    <td>{{ role.description }}</td>
-                    <td>{{ role.isActive ? 'Yes' : 'No' }}</td>
+                <tr *ngFor="let role of roles; let i = index">
+                    <th scope="row">{{role.id}}</th>
+                    <td>{{role.roleName}}</td>
+                    <td>{{role.description}}</td>
+                    <td>{{role.isActive}}</td>
                     <td>
                         <button type="button" (click)="managePrivileges(role)" class="btn btn-warning" title="Manage Privileges">
-                            <i class="bi bi-lock"></i>
+                            <i class="bi bi-lock"></i>View
                         </button>
                         <button type="button" (click)="edit(content, role)" class="btn btn-primary ms-2" title="Edit">
-                            <i class="bi bi-pencil-square"></i>
+                            <i class="bi bi-pencil-square"></i>Edit
                         </button>
                         <button type="button" (click)="delete(role.id)" class="btn btn-danger ms-2" title="Delete">
-                            <i class="bi bi-trash"></i>
+                            <i class="bi bi-trash"></i>Delete
                         </button>
                     </td>
                 </tr>
             </tbody>
+            
         </table>
     </div>
 </div>
-
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Add / Edit Role</h4>

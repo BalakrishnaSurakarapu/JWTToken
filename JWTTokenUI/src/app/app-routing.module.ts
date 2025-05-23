@@ -5,6 +5,7 @@ import { RoleComponent } from './role/role.component';
 import { RolePrivilegeComponent } from './role-privilege/role-privilege.component';
 import { UserComponent } from './user/user.component';
 import { TestComponent } from './test/test.component';
+import { DirectiveComponent } from './directive/directive.component';
 
 const routes: Routes = [
   { path: 'students', component: StudentComponent, pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
 { path: 'roles', component: RoleComponent },
 { path: 'create-role', component: RoleComponent },
 { path: 'test', component: TestComponent },
+{path:'directive', component:DirectiveComponent},
 { path: '', redirectTo: '/students', pathMatch: 'full' }, // Default route
 ];
 

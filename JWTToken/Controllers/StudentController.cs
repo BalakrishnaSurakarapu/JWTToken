@@ -13,7 +13,7 @@ namespace JWTToken.Controllers
     [Route("api/[controller]")]
     [ApiController]
    // [EnableCors(PolicyName = "AllowAll")] 
-    [Authorize(AuthenticationSchemes = "LoginForLocalUsers", Roles = "Superadmin,Admin")]
+    [Authorize(AuthenticationSchemes = "LoginForLocalUsers", Roles = "Superadmin,Admin,Student")]
     public class StudentController : ControllerBase
     {
         private readonly ILogger<StudentController> _logger;

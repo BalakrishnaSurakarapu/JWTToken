@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { RoleService } from '../services/role.service';
 import { NotificationService } from '../services/notification.service';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-role',
@@ -18,8 +19,7 @@ export class RoleComponent {
     description: new FormControl(''),
     isActive: new FormControl(false),
   });
-  modalService: any;
-  constructor(private _roleService: RoleService,
+  constructor(private _roleService: RoleService, private modalService: NgbModal,
     private _notificationService: NotificationService, private _router: Router) {
     this.getRoles();
   }
@@ -109,8 +109,5 @@ export class RoleComponent {
   managePrivileges(role: any){
     this._router.navigate(['role-privileges', role.id]);
     sessionStorage.setItem('roleName', role.roleName);
-  }
-  trackByRoleId(index: number, role: any): number {
-    return role.id;
   }
 }
